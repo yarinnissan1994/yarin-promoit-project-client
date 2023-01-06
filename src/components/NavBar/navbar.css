@@ -1,0 +1,43 @@
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(190, 255, 210);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 1rem;
+}
+
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu li {
+  margin: 0 1rem;
+}
+
+.navbar-menu li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+}
+
+.navbar-menu li a .Link-lbl {
+  margin-left: 0.5rem;
+}
+
+.navbar-menu li a:hover {
+  color: #0070f3;
+}
+
+.navbar-menu li a:active {
+  color: #005cbf;
+}
+
+.navbar-menu li a:focus {
+  outline: none;
+  box-shadow: none;
+}
