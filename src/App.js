@@ -11,6 +11,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { RoleContext } from "./context/role.context";
 import { RegistarationPage } from "./pages/Registeration/registeration.page";
 import { RegisterationFormComponent } from "./components/RegisterationForm/registerationForm.component";
+import { UserManagerComponent } from "./components/UserManager/userManager.component";
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -35,6 +36,10 @@ function App() {
                 <Route
                   path="/registerarion-form"
                   element={<RegisterationFormComponent />}
+                ></Route>
+                <Route
+                  path="/user-manager"
+                  element={<UserManagerComponent />}
                 ></Route>
               </Routes>
             </div>

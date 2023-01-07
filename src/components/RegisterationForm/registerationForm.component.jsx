@@ -1,8 +1,9 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { addUser } from "../../services/services";
+import { ToastContainer, toast } from "react-toastify";
 import "./RegisterationForm.css";
-//import { UpdateProduct } from "../../services/services";
 
 export const RegisterationFormComponent = () => {
   const navigate = useNavigate();
@@ -16,7 +17,35 @@ export const RegisterationFormComponent = () => {
   const [websiteUrl, setWebsiteUrl] = useState("Enter Website URL Here");
   const [address, setAddress] = useState("Future Shiping Address");
   const [phone, setPhone] = useState("Phone Number");
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("Image URL");
+
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  const notify_seccess = (message) => {
+    toast.success(message, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  };
+
+  const notify_error = (message) => {
+    toast.error(message, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -27,58 +56,63 @@ export const RegisterationFormComponent = () => {
       address === "" ||
       phone === ""
     ) {
-      alert("Please fill all fields");
+      notify_error("Please fill all fields");
     } else {
       if (role === "NPO") {
         const NPOUser = {
-          Code: null,
           Name: fullName,
           Email: email,
           WebsiteURL: websiteUrl,
           MyImage: image,
         };
         console.log(NPOUser);
-        //   await UpdateProduct(updatedProduct);
-        //   alert("Product Was Updated");
-        //   navigate("/");
+        await addUser(NPOUser, role);
+        notify_seccess(
+          "Your Request has been recived in the system and will be aproved soon!"
+        );
+        await sleep(5000);
+        navigate("/");
       } else if (role === "BC") {
         const BCUser = {
-          Code: null,
           Name: fullName,
           Email: email,
           MyImage: image,
         };
         console.log(BCUser);
-        //   await UpdateProduct(updatedProduct);
-        //   alert("Product Was Updated");
-        //   navigate("/");
+        await addUser(BCUser, role);
+        notify_seccess(
+          "Your Request has been recived in the system and will be aproved soon!"
+        );
+        await sleep(5000);
+        navigate("/");
       } else if (role === "SA") {
         const SAUser = {
-          Code: null,
           Name: fullName,
           Email: email,
           Address: address,
           PhoneNumber: phone,
-          MoneyStatus: null,
           MyImage: image,
         };
         console.log(SAUser);
-        //   await UpdateProduct(updatedProduct);
-        //   alert("Product Was Updated");
-        //   navigate("/");
+        await addUser(SAUser, role);
+        notify_seccess(
+          "Your Request has been recived in the system and will be aproved soon!"
+        );
+        await sleep(5000);
+        navigate("/");
       }
     }
   };
 
-  const handleImg = (file) => {
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      const arrayBuffer = reader.result;
-      const bitArray = new Uint8Array(arrayBuffer);
-      setImage(bitArray);
-    };
-    reader.readAsArrayBuffer(file);
-  };
+  // const handleImg = (file) => {
+  //   const reader = new FileReader();
+  //   reader.onloadend = () => {
+  //     const arrayBuffer = reader.result;
+  //     const bitArray = new Uint8Array(arrayBuffer);
+  //     setImage(bitArray);
+  //   };
+  //   reader.readAsArrayBuffer(file);
+  // };
 
   const handleReturn = () => {
     navigate("/");
@@ -139,17 +173,25 @@ export const RegisterationFormComponent = () => {
             <br />
           </>
         )}
-        <label htmlFor="image-upload">Select an image:</label>
+        {/* <label htmlFor="image-upload">Select an image:</label>
         <input
           type="file"
           id="image-upload"
           accept="image/*"
           onChange={(event) => handleImg(event.target.files[0])}
+        /> */}
+        <label htmlFor="image-upload">Enter an image URL:</label>
+        <input
+          type="text"
+          id="image-upload"
+          value={image}
+          onChange={(event) => setImage(event.target.value)}
         />
         <br />
         <button type="submit" className="btn btn-success">
           Submit
         </button>
+        <ToastContainer />
         <button className="btn btn-danger" onClick={handleReturn}>
           Return
         </button>

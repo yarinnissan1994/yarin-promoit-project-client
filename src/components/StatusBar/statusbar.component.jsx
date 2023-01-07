@@ -75,6 +75,11 @@ export const StatusbarComponent = (props) => {
             <li>
               <label className="Link-lbl">Tweeter Report</label>
             </li>
+            <li>
+              <Link to="/user-manager">
+                <label className="Link-lbl">User Manager</label>
+              </Link>
+            </li>
           </>
         )}
         {role === "NPO" && (
