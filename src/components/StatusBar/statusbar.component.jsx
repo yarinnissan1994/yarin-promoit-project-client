@@ -22,12 +22,10 @@ export const StatusbarComponent = (props) => {
     } else if (result === false) {
       setPendding(true);
     }
-
-    console.log(pendding);
   };
 
   return (
-    <div className="statusbar-container">
+    <div className="Statusbar--statusbar-container statusbar-container">
       <ul className="statusbar-menu">
         <li>
           <label className="Link-lbl">
@@ -85,7 +83,9 @@ export const StatusbarComponent = (props) => {
         {role === "NPO" && (
           <>
             <li>
-              <label className="Link-lbl">New Campaign</label>
+              <Link to="/new-campaign">
+                <label className="Link-lbl">New Campaign</label>
+              </Link>
             </li>
             <li>
               <label className="Link-lbl">Campagin Report</label>

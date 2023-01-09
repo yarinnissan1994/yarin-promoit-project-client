@@ -1,0 +1,14 @@
+.CreateCampaign--form-container {
+  width: 82%;
+  height: 100%;
+}
+.CreateCampaign--form-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.CreateCampaign--form-container .form-group {
+  width: 50%;
+}

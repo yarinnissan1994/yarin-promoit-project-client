@@ -12,6 +12,8 @@ import { RoleContext } from "./context/role.context";
 import { RegistarationPage } from "./pages/Registeration/registeration.page";
 import { RegisterationFormComponent } from "./components/RegisterationForm/registerationForm.component";
 import { UserManagerComponent } from "./components/UserManager/userManager.component";
+import { CreateCampaignComponent } from "./components/CreateCampaign/createCampaign.component";
+import { CampaignPage } from "./pages/CampaignPage/campaign.page";
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -26,10 +28,6 @@ function App() {
               <StatusbarComponent />
               <Routes>
                 <Route path="/" element={<HomePage />}></Route>
-                <Route
-                  path="/all-campaigns"
-                  element={<AllCampaignsPage />}
-                ></Route>
                 <Route path="/about-us" element={<AboutUsPage />}></Route>
                 <Route path="/contact-us" element={<ContactUsPage />}></Route>
                 <Route path="/register" element={<RegistarationPage />}></Route>
@@ -41,6 +39,15 @@ function App() {
                   path="/user-manager"
                   element={<UserManagerComponent />}
                 ></Route>
+                <Route
+                  path="/all-campaigns"
+                  element={<AllCampaignsPage />}
+                ></Route>
+                <Route
+                  path="/new-campaign"
+                  element={<CreateCampaignComponent />}
+                ></Route>
+                <Route path="/campaign" element={<CampaignPage />}></Route>
               </Routes>
             </div>
           </div>
@@ -57,6 +64,7 @@ function App() {
                 path="/all-campaigns"
                 element={<AllCampaignsPage />}
               ></Route>
+              <Route path="/campaign" element={<CampaignPage />}></Route>
               <Route path="/about-us" element={<AboutUsPage />}></Route>
               <Route path="/contact-us" element={<ContactUsPage />}></Route>
             </Routes>

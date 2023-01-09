@@ -1,18 +1,19 @@
-.card-container {
+.RegisterationType--card-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 5px;
+  margin-left: 18px;
 }
 .register-header {
   text-align: center;
 }
-.card {
+.RegisterationType--card-container .card {
   width: 321px;
   background-color: antiquewhite !important;
 }
-.card-img {
+.RegisterationType--card-container .card-img {
   height: 250px;
   width: 320px;
   align-self: center;

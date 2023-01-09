@@ -1,0 +1,14 @@
+.ContactUs--form-container {
+  width: 82%;
+  height: 100%;
+}
+.ContactUs--form-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.ContactUs--form-container .form-group {
+  width: 50%;
+}

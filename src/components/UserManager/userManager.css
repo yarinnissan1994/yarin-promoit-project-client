@@ -1,13 +1,13 @@
-.my-tbl {
+.UserManager--my-tbl {
   height: 100vh;
   width: 82%;
   overflow: auto;
 }
 
-td:nth-child(2):hover {
+.UserManager--my-tbl td:nth-child(2):hover {
   cursor: pointer;
 }
 
-button {
+.UserManager--my-tbl button {
   width: 120px;
 }

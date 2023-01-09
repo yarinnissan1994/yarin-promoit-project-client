@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { addUser } from "../../services/services";
 import { ToastContainer, toast } from "react-toastify";
 import "./RegisterationForm.css";
+import { getPendding } from "./../../services/services";
 
 export const RegisterationFormComponent = () => {
   const navigate = useNavigate();
@@ -58,48 +59,49 @@ export const RegisterationFormComponent = () => {
     ) {
       notify_error("Please fill all fields");
     } else {
-      if (role === "NPO") {
-        const NPOUser = {
-          Name: fullName,
-          Email: email,
-          WebsiteURL: websiteUrl,
-          MyImage: image,
-        };
-        console.log(NPOUser);
-        await addUser(NPOUser, role);
-        notify_seccess(
-          "Your Request has been recived in the system and will be aproved soon!"
-        );
-        await sleep(5000);
-        navigate("/");
-      } else if (role === "BC") {
-        const BCUser = {
-          Name: fullName,
-          Email: email,
-          MyImage: image,
-        };
-        console.log(BCUser);
-        await addUser(BCUser, role);
-        notify_seccess(
-          "Your Request has been recived in the system and will be aproved soon!"
-        );
-        await sleep(5000);
-        navigate("/");
-      } else if (role === "SA") {
-        const SAUser = {
-          Name: fullName,
-          Email: email,
-          Address: address,
-          PhoneNumber: phone,
-          MyImage: image,
-        };
-        console.log(SAUser);
-        await addUser(SAUser, role);
-        notify_seccess(
-          "Your Request has been recived in the system and will be aproved soon!"
-        );
-        await sleep(5000);
-        navigate("/");
+      if ((await getPendding(email)) === null) {
+        if (role === "NPO") {
+          const NPOUser = {
+            Name: fullName,
+            Email: email,
+            WebsiteURL: websiteUrl,
+            MyImage: image,
+          };
+          await addUser(NPOUser, role);
+          notify_seccess(
+            "Your Request has been recived in the system and will be aproved soon!"
+          );
+          await sleep(5000);
+          navigate("/");
+        } else if (role === "BC") {
+          const BCUser = {
+            Name: fullName,
+            Email: email,
+            MyImage: image,
+          };
+          await addUser(BCUser, role);
+          notify_seccess(
+            "Your Request has been recived in the system and will be aproved soon!"
+          );
+          await sleep(5000);
+          navigate("/");
+        } else if (role === "SA") {
+          const SAUser = {
+            Name: fullName,
+            Email: email,
+            Address: address,
+            PhoneNumber: phone,
+            MyImage: image,
+          };
+          await addUser(SAUser, role);
+          notify_seccess(
+            "Your Request has been recived in the system and will be aproved soon!"
+          );
+          await sleep(5000);
+          navigate("/");
+        }
+      } else {
+        notify_error("Email already registerd in our system!");
       }
     }
   };
@@ -123,7 +125,7 @@ export const RegisterationFormComponent = () => {
   }, []);
 
   return (
-    <div className="form-container">
+    <div className="RegisterationForm--form-container form-container">
       <form onSubmit={handleSubmit}>
         <label htmlFor="full-name">Full Name:</label>
         <input
@@ -135,6 +137,7 @@ export const RegisterationFormComponent = () => {
         <br />
         <label htmlFor="email">Email:</label>
         <input
+          readOnly
           type="email"
           id="email"
           value={email}

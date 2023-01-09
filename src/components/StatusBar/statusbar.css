@@ -1,4 +1,4 @@
-.statusbar-container {
+.Statusbar--statusbar-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -9,7 +9,7 @@
   padding: 0.5rem 1rem;
 }
 
-.statusbar-menu {
+.Statusbar--statusbar-container .statusbar-menu {
   display: flex;
   list-style: none;
   margin: 0;
@@ -17,35 +17,35 @@
   flex-direction: column;
 }
 
-.statusbar-menu li {
+.Statusbar--statusbar-container .statusbar-menu li {
   margin: 0.5rem 0;
 }
 
-.statusbar-menu li a {
+.Statusbar--statusbar-container .statusbar-menu li a {
   display: flex;
   align-items: flex-start;
   text-decoration: none;
   color: #000;
 }
 
-.statusbar-menu li a .Link-lbl {
+.Statusbar--statusbar-container .statusbar-menu li a .Link-lbl {
   margin-left: 0.5rem;
 }
 
-.statusbar-menu li a:hover {
+.Statusbar--statusbar-container .statusbar-menu li a:hover {
   color: #0070f3;
 }
 
-.statusbar-menu li a:active {
+.Statusbar--statusbar-container .statusbar-menu li a:active {
   color: #005cbf;
 }
 
-.statusbar-menu li a:focus {
+.Statusbar--statusbar-container .statusbar-menu li a:focus {
   outline: none;
   box-shadow: none;
 }
 
-.user-picture {
+.Statusbar--statusbar-container .user-picture {
   border-radius: 50%;
   width: 2rem;
   height: 2rem;

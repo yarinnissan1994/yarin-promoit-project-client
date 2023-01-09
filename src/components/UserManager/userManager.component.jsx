@@ -29,13 +29,13 @@ export const UserManagerComponent = () => {
   };
 
   const handleApprove = async (user) => {
-    approveUserPendding(user.code);
+    approveUserPendding(user.Code);
     notify_seccess(user.Name + " has been approved");
     getUserDataFromDB();
   };
 
   return (
-    <div className="my-tbl">
+    <div className="UserManager--my-tbl my-tbl">
       <table className="table table-striped">
         <thead>
           <tr>

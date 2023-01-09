@@ -1,4 +1,4 @@
-.navbar-container {
+.Navbar--navbar-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -7,37 +7,37 @@
   padding: 0.5rem 1rem;
 }
 
-.navbar-menu {
+.Navbar--navbar-container .navbar-menu {
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.navbar-menu li {
+.Navbar--navbar-container .navbar-menu li {
   margin: 0 1rem;
 }
 
-.navbar-menu li a {
+.Navbar--navbar-container .navbar-menu li a {
   display: flex;
   align-items: center;
   text-decoration: none;
   color: #000;
 }
 
-.navbar-menu li a .Link-lbl {
+.Navbar--navbar-container .navbar-menu li a .Link-lbl {
   margin-left: 0.5rem;
 }
 
-.navbar-menu li a:hover {
+.Navbar--navbar-container .navbar-menu li a:hover {
   color: #0070f3;
 }
 
-.navbar-menu li a:active {
+.Navbar--navbar-container .navbar-menu li a:active {
   color: #005cbf;
 }
 
-.navbar-menu li a:focus {
+.Navbar--navbar-container .navbar-menu li a:focus {
   outline: none;
   box-shadow: none;
 }

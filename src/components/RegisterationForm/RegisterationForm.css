@@ -1,4 +1,4 @@
-.form-container {
+.RegisterationForm--form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,32 +9,24 @@
   border-radius: 5px;
 }
 
-form {
+.RegisterationForm--form-container form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-label {
+.RegisterationForm--form-container label {
   margin: 10px 0 5px 0;
   font-weight: bold;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="number"] {
+.RegisterationForm--form-container input[type="text"],
+.RegisterationForm--form-container input[type="email"],
+.RegisterationForm--form-container input[type="number"] {
   width: 300px;
   height: 35px;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 0 10px;
-  font-size: 16px;
-}
-
-input[type="file"] {
-  width: 300px;
-  height: 35px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
   font-size: 16px;
 }

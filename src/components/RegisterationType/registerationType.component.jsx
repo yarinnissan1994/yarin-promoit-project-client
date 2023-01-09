@@ -15,7 +15,7 @@ export const RegisterationTypeComponent = () => {
   return (
     <>
       <h1 className="register-header">Who are You?</h1>
-      <div className="card-container">
+      <div className="RegisterationType--card-container card-container">
         <div className="card">
           <img
             src="https://miro.medium.com/max/1200/1*WQlvxGQtWTjXWyVcn7F0Xw.jpeg"

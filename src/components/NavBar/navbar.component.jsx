@@ -11,7 +11,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 export const NavbarComponent = (props) => {
   const { user, logout, loginWithRedirect } = useAuth0();
   return (
-    <div className="navbar-container">
+    <div className="Navbar--navbar-container navbar-container">
       <ul className="navbar-menu">
         <li>
           <Link to="/">

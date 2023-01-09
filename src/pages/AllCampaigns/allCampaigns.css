@@ -1,0 +1,21 @@
+.AllCampaigns--my-cards {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AllCampaigns--my-cards .my-card {
+  height: 500px;
+  width: 400px;
+}
+
+.AllCampaigns--my-cards img {
+  height: 280px;
+  width: 100%;
+}
+
+.AllCampaigns--my-cards button {
+  position: absolute;
+  bottom: 10px;
+}

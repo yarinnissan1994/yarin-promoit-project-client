@@ -1,0 +1,19 @@
+.CampaignPage--container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 0 !important;
+  text-align: center;
+}
+
+.CampaignPage--container .card {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.CampaignPage--container .card-img-top {
+  width: 500px;
+}
