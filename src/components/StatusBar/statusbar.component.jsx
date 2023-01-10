@@ -5,9 +5,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 import "./statusbar.css";
 import { RoleContext } from "../../context/role.context";
 import { getPendding } from "../../services/services";
+import { CampaignsSourceContext } from "../../context/campaignsSource.context";
 
 export const StatusbarComponent = (props) => {
   const { role } = useContext(RoleContext);
+  const { setSource } = useContext(CampaignsSourceContext);
   const { user } = useAuth0();
   const [pendding, setPendding] = useState(false);
 
@@ -88,14 +90,24 @@ export const StatusbarComponent = (props) => {
               </Link>
             </li>
             <li>
-              <label className="Link-lbl">Campagin Report</label>
+              <Link
+                to="/all-campaigns"
+                onClick={() => setSource("NPOCampaigns")}
+              >
+                <label className="Link-lbl">My Campagins</label>
+              </Link>
             </li>
           </>
         )}
         {role === "BC" && (
           <>
             <li>
-              <label className="Link-lbl">New Product</label>
+              <Link
+                to="/all-campaigns"
+                onClick={() => setSource("BCCampaigns")}
+              >
+                <label className="Link-lbl">Add Campaign Product</label>
+              </Link>
             </li>
             <li>
               <label className="Link-lbl">Orders Report</label>

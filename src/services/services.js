@@ -50,9 +50,24 @@ export const addUserMessage = async (UserMessage) => {
   await axios.post(`${ServerUrl}/post-user-message`, UserMessage);
 };
 
-export const addNewCampaign = async (addNewCampaign, UserEmail) => {
+export const addNewCampaign = async (NewCampaign, UserEmail) => {
+  await axios.post(`${ServerUrl}/post-new-campaign/${UserEmail}`, NewCampaign);
+};
+
+export const editCampaign = async (updatedCampaign, UserEmail) => {
   await axios.post(
-    `${ServerUrl}/post-new-campaign/${UserEmail}`,
-    addNewCampaign
+    `${ServerUrl}/post-updated-campaign/${UserEmail}`,
+    updatedCampaign
+  );
+};
+
+export const toggleCampaignIsActive = async (campaignCode) => {
+  await axios.post(`${ServerUrl}/post-campaign-is-active/${campaignCode}`);
+};
+
+export const addNewCampaignProduct = async (NewProduct, UserEmail) => {
+  await axios.post(
+    `${ServerUrl}/post-new-campaign-product/${UserEmail}`,
+    NewProduct
   );
 };

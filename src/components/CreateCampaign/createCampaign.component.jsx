@@ -1,16 +1,41 @@
-import React, { useState } from "react";
-import { addNewCampaign } from "../../services/services";
+import React, { useContext, useEffect, useState } from "react";
+import { addNewCampaign, editCampaign } from "../../services/services";
 import "./createCampaign.css";
 import { ToastContainer, toast } from "react-toastify";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { CampaignsSourceContext } from "../../context/campaignsSource.context";
 
 export const CreateCampaignComponent = () => {
+  const [Code, setCode] = useState(null);
   const [Name, setName] = useState("");
   const [Email, setEmail] = useState("");
   const [Description, setDescription] = useState("");
   const [LandingPageURL, setLandingPageURL] = useState("");
   const [HashTag, setHashTag] = useState("");
   const [MyImage, setMyImage] = useState("");
+  const [isEdit, setIsEdit] = useState(false);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const { setSource } = useContext(CampaignsSourceContext);
+
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  useEffect(() => {
+    if (location.state && location.state.Campaign) {
+      const { Campaign } = location.state;
+      setCode(Campaign.Code);
+      setName(Campaign.Name);
+      setEmail(Campaign.Email);
+      setDescription(Campaign.Description);
+      setLandingPageURL(Campaign.Landing_Page_URL);
+      setHashTag(Campaign.HashTag);
+      setMyImage(Campaign.Image);
+      setIsEdit(true);
+    }
+  }, []);
 
   const { user } = useAuth0();
 
@@ -40,9 +65,10 @@ export const CreateCampaignComponent = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const newCampaign = {
+      Code,
       Name,
       Email,
       Description,
@@ -60,8 +86,13 @@ export const CreateCampaignComponent = () => {
     ) {
       notify_error("Please fill all fields");
     } else {
-      addNewCampaign(newCampaign, user.email);
-      notify_seccess("Message Arraived");
+      if (!isEdit) addNewCampaign(newCampaign, user.email);
+      else if (isEdit) editCampaign(newCampaign, user.email);
+
+      notify_seccess("Campain was successully uploaded");
+      await sleep(5000);
+      setSource("NPOCampaigns");
+      navigate("/all-campaigns");
     }
   };
 

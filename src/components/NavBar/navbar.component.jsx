@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import CampaignIcon from "@mui/icons-material/Campaign";
@@ -7,9 +7,11 @@ import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 import "./navbar.css";
 import { useAuth0 } from "@auth0/auth0-react";
+import { CampaignsSourceContext } from "../../context/campaignsSource.context";
 
 export const NavbarComponent = (props) => {
   const { user, logout, loginWithRedirect } = useAuth0();
+  const { setSource } = useContext(CampaignsSourceContext);
   return (
     <div className="Navbar--navbar-container navbar-container">
       <ul className="navbar-menu">
@@ -20,7 +22,7 @@ export const NavbarComponent = (props) => {
           </Link>
         </li>
         <li>
-          <Link to="/all-campaigns">
+          <Link to="/all-campaigns" onClick={() => setSource("navbar")}>
             <CampaignIcon />
             <label className="Link-lbl">Campaigns</label>
           </Link>

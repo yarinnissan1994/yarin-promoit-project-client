@@ -16,6 +16,19 @@
 }
 
 .AllCampaigns--my-cards button {
+}
+
+.AllCampaigns--my-cards .complete-png {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  height: 90px;
+  width: 160px;
+}
+
+.AllCampaigns--my-cards .btn-container {
   position: absolute;
   bottom: 10px;
+  display: flex;
+  gap: 10px;
 }
