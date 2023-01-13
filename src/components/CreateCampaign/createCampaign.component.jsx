@@ -87,7 +87,7 @@ export const CreateCampaignComponent = () => {
       notify_error("Please fill all fields");
     } else {
       if (!isEdit) addNewCampaign(newCampaign, user.email);
-      else if (isEdit) editCampaign(newCampaign, user.email);
+      else if (isEdit) editCampaign(newCampaign);
 
       notify_seccess("Campain was successully uploaded");
       await sleep(5000);

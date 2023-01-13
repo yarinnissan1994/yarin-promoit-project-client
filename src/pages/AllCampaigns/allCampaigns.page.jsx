@@ -13,7 +13,12 @@ export const AllCampaignsPage = () => {
 
   const getCampaignsFromDB = async () => {
     let res = await getCampaigns();
-    if (source === "BCCampaigns") {
+    if (source === "BCCampaigns" || source === "SACampagins") {
+      let filteredRes = res.filter((c) => {
+        if (c.Is_Active === true) return c;
+      });
+      res = filteredRes;
+    } else if (source === "NPOCampaigns") {
       let filteredRes = res.filter((c) => {
         if (c.NPO_Email === user.email) return c;
       });
@@ -22,17 +27,8 @@ export const AllCampaignsPage = () => {
     setCampaignList(res);
   };
 
-  const getNPOCampaignsFromDB = async () => {
-    let res = await getCampaigns();
-    let filteredRes = res.filter((c) => {
-      if (c.NPO_Email === user.email) return c;
-    });
-    setCampaignList(filteredRes);
-  };
-
   useEffect(() => {
-    if (source === "navbar" || source === "BCCampaigns") getCampaignsFromDB();
-    else if (source === "NPOCampaigns") getNPOCampaignsFromDB();
+    getCampaignsFromDB();
   }, []);
 
   const handleClick = (Campaign, Source) => {
@@ -44,7 +40,14 @@ export const AllCampaignsPage = () => {
     });
   };
 
-  const handleCampaignProducts = (Campaign, Source) => {};
+  const handleCampaignProducts = (Campaign, Source) => {
+    navigate("/Products", {
+      state: {
+        Campaign,
+        Source,
+      },
+    });
+  };
 
   const handleAddCampaignProducts = (Campaign) => {
     navigate("/add-campaign-product", {
@@ -89,25 +92,51 @@ export const AllCampaignsPage = () => {
                           relate to this campagin
                         </p>
                       )}
+                      {source === "SACampaigns" && (
+                        <p className="card-text">
+                          Click on the button bellow and Choose the item you
+                          wish to Donate
+                        </p>
+                      )}
                       <h6 className="card-title">
                         Created By {campaign.NPO_Name}
                       </h6>
                       <div className="btn-container">
                         {source === "navbar" && (
-                          <button
-                            className="btn btn-primary"
-                            onClick={() => handleClick(campaign, source)}
-                          >
-                            More Info
-                          </button>
+                          <>
+                            <button
+                              className="btn btn-primary"
+                              onClick={() => handleClick(campaign, source)}
+                            >
+                              More Info
+                            </button>
+                            <button
+                              className="btn btn-info"
+                              onClick={() =>
+                                handleCampaignProducts(campaign, source)
+                              }
+                            >
+                              Products
+                            </button>
+                          </>
                         )}
                         {source === "NPOCampaigns" && (
-                          <button
-                            className="btn btn-primary"
-                            onClick={() => handleClick(campaign, source)}
-                          >
-                            Control Pannel
-                          </button>
+                          <>
+                            <button
+                              className="btn btn-primary"
+                              onClick={() => handleClick(campaign, source)}
+                            >
+                              Control Pannel
+                            </button>
+                            <button
+                              className="btn btn-info"
+                              onClick={() =>
+                                handleCampaignProducts(campaign, source)
+                              }
+                            >
+                              Products
+                            </button>
+                          </>
                         )}
                         {source === "BCCampaigns" && (
                           <>
@@ -117,7 +146,14 @@ export const AllCampaignsPage = () => {
                             >
                               More Info
                             </button>
-                            <br />
+                            <button
+                              className="btn btn-info"
+                              onClick={() =>
+                                handleCampaignProducts(campaign, source)
+                              }
+                            >
+                              Products
+                            </button>
                             <button
                               className="btn btn-success"
                               onClick={() =>
@@ -125,6 +161,24 @@ export const AllCampaignsPage = () => {
                               }
                             >
                               Add Product
+                            </button>
+                          </>
+                        )}
+                        {source === "SACampaigns" && (
+                          <>
+                            <button
+                              className="btn btn-primary"
+                              onClick={() => handleClick(campaign, source)}
+                            >
+                              More Info
+                            </button>
+                            <button
+                              className="btn btn-info"
+                              onClick={() =>
+                                handleCampaignProducts(campaign, source)
+                              }
+                            >
+                              Donate a Product
                             </button>
                           </>
                         )}

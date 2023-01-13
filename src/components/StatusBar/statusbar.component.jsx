@@ -106,18 +106,25 @@ export const StatusbarComponent = (props) => {
                 to="/all-campaigns"
                 onClick={() => setSource("BCCampaigns")}
               >
-                <label className="Link-lbl">Add Campaign Product</label>
+                <label className="Link-lbl">Products Pannel</label>
               </Link>
             </li>
             <li>
-              <label className="Link-lbl">Orders Report</label>
+              <Link to="/order-manager">
+                <label className="Link-lbl">Orders Manager</label>
+              </Link>
             </li>
           </>
         )}
         {role === "SA" && (
           <>
             <li>
-              <label className="Link-lbl">Campaigns Products</label>
+              <Link
+                to="/all-campaigns"
+                onClick={() => setSource("SACampaigns")}
+              >
+                <label className="Link-lbl">Make A Donation</label>
+              </Link>
             </li>
             <li>
               <label className="Link-lbl">Products i Donated</label>

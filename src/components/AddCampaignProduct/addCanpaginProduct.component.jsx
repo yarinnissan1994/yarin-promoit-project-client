@@ -1,22 +1,27 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import { addNewCampaignProduct } from "../../services/services";
+import {
+  addNewCampaignProduct,
+  editCampaignProduct,
+} from "../../services/services";
 import "./addCampaignProduct.css";
 
 export const AddCanpaginProductComponent = () => {
+  const [code, setCode] = useState(null);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [unitsInStock, setUnitsInStock] = useState("");
   const [image, setImage] = useState("");
+  const [isEdit, setIsEdit] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
   const { user } = useAuth0();
 
-  const { Campaign } = location.state;
+  const { Campaign, Product } = location.state;
 
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -46,9 +51,22 @@ export const AddCanpaginProductComponent = () => {
     });
   };
 
+  useEffect(() => {
+    if (location.state && location.state.Product) {
+      setCode(Product.Code);
+      setName(Product.Name);
+      setDescription(Product.Description);
+      setPrice(Product.Price);
+      setUnitsInStock(Product.Units_In_Stock);
+      setImage(Product.Image);
+      setIsEdit(true);
+    }
+  }, []);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const newProduct = {
+      Code: code,
       Name: name,
       Description: description,
       Price: parseFloat(price),
@@ -64,8 +82,9 @@ export const AddCanpaginProductComponent = () => {
     ) {
       notify_error("Please fill all fields");
     } else {
-      addNewCampaignProduct(newProduct, user.email);
-      notify_seccess("Campain was successully uploaded");
+      if (!isEdit) addNewCampaignProduct(newProduct, user.email);
+      else if (isEdit) editCampaignProduct(newProduct);
+      notify_seccess("Product was successully uploaded");
       await sleep(5000);
       navigate("/all-campaigns");
     }

@@ -1,0 +1,42 @@
+.OrderManager--my-tbl {
+  height: 100vh;
+  width: 82%;
+  overflow: auto;
+  text-align: center;
+}
+
+.OrderManager--my-tbl td:nth-child(2):hover {
+  cursor: pointer;
+}
+
+.OrderManager--my-tbl button {
+  width: 120px;
+}
+
+.OrderManager--my-tbl .modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 70%;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0px 0px 10px black;
+  transition: all 0.3s ease-in-out;
+}
+
+.OrderManager--my-tbl .modal-container .modal-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+}
+
+.OrderManager--my-tbl .codes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+}

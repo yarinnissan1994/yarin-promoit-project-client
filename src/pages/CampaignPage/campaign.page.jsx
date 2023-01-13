@@ -25,8 +25,6 @@ export const CampaignPage = () => {
   };
 
   const handleShutDown = async () => {
-    console.log(Campaign.Code);
-    await sleep(3000);
     toggleCampaignIsActive(Campaign.Code);
     navigate("/all-campaigns");
   };

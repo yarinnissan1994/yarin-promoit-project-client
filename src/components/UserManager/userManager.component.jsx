@@ -29,9 +29,9 @@ export const UserManagerComponent = () => {
   };
 
   const handleApprove = async (user) => {
-    approveUserPendding(user.Code);
+    await approveUserPendding(user.Code);
     notify_seccess(user.Name + " has been approved");
-    getUserDataFromDB();
+    await getUserDataFromDB();
   };
 
   return (

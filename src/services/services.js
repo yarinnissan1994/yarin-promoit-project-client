@@ -11,6 +11,15 @@ export const getRoles = async (userId) => {
   }
 };
 
+export const getUserInfo = async (Email, Role) => {
+  let result = await axios.get(`${ServerUrl}/get-user-info/${Email}/${Role}`);
+  if (result.status === 200) {
+    return result.data;
+  } else {
+    return null;
+  }
+};
+
 export const getPenddingList = async () => {
   let result = await axios.get(`${ServerUrl}/get-pendding-list`);
   if (result.status === 200) {
@@ -38,6 +47,28 @@ export const getCampaigns = async () => {
   }
 };
 
+export const getProducts = async () => {
+  let result = await axios.get(`${ServerUrl}/get-products`);
+  if (result.status === 200) {
+    return result.data;
+  } else {
+    return null;
+  }
+};
+
+export const getOrders = async () => {
+  let result = await axios.get(`${ServerUrl}/get-orders`);
+  if (result.status === 200) {
+    return result.data;
+  } else {
+    return null;
+  }
+};
+
+export const approveOrderShipped = async (orderCode) => {
+  await axios.post(`${ServerUrl}/post-order-shipped/${orderCode}`);
+};
+
 export const approveUserPendding = async (userCode) => {
   await axios.post(`${ServerUrl}/post-approve-user/${userCode}`);
 };
@@ -54,11 +85,8 @@ export const addNewCampaign = async (NewCampaign, UserEmail) => {
   await axios.post(`${ServerUrl}/post-new-campaign/${UserEmail}`, NewCampaign);
 };
 
-export const editCampaign = async (updatedCampaign, UserEmail) => {
-  await axios.post(
-    `${ServerUrl}/post-updated-campaign/${UserEmail}`,
-    updatedCampaign
-  );
+export const editCampaign = async (updatedCampaign) => {
+  await axios.post(`${ServerUrl}/post-updated-campaign`, updatedCampaign);
 };
 
 export const toggleCampaignIsActive = async (campaignCode) => {
@@ -70,4 +98,19 @@ export const addNewCampaignProduct = async (NewProduct, UserEmail) => {
     `${ServerUrl}/post-new-campaign-product/${UserEmail}`,
     NewProduct
   );
+};
+
+export const editCampaignProduct = async (UpdatedProduct) => {
+  await axios.post(
+    `${ServerUrl}/post-updated-campaign-product`,
+    UpdatedProduct
+  );
+};
+
+export const updateDonateDetails = async (NewOrder, Quantity) => {
+  await axios.post(`${ServerUrl}/post-donate-details/${Quantity}`, NewOrder);
+};
+
+export const updateSAMoneyStatus = async (MoneyStatus, SACode) => {
+  await axios.post(`${ServerUrl}/post-sa-money-status/${SACode}`, MoneyStatus);
 };

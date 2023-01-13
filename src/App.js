@@ -16,53 +16,67 @@ import { CreateCampaignComponent } from "./components/CreateCampaign/createCampa
 import { CampaignPage } from "./pages/CampaignPage/campaign.page";
 import { CampaignsSourceContext } from "./context/campaignsSource.context";
 import { AddCanpaginProductComponent } from "./components/AddCampaignProduct/addCanpaginProduct.component";
+import { ProductsPage } from "./pages/Products/products.page";
+import { UserInfoContext } from "./context/userInfo.context";
+import { OrderManagerComponent } from "./components/OrderManager/orderManager.component";
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
   const [role, setRole] = useState("");
+  const [userInfo, setUserInfo] = useState({});
   const [source, setSource] = useState("");
   if (!isLoading) {
     if (isAuthenticated) {
       return (
         <RoleContext.Provider value={{ role, setRole }}>
-          <CampaignsSourceContext.Provider value={{ source, setSource }}>
-            <div className="App">
-              <NavbarComponent />
-              <div className="middle-layer">
-                <StatusbarComponent />
-                <Routes>
-                  <Route path="/" element={<HomePage />}></Route>
-                  <Route path="/about-us" element={<AboutUsPage />}></Route>
-                  <Route path="/contact-us" element={<ContactUsPage />}></Route>
-                  <Route
-                    path="/register"
-                    element={<RegistarationPage />}
-                  ></Route>
-                  <Route
-                    path="/registerarion-form"
-                    element={<RegisterationFormComponent />}
-                  ></Route>
-                  <Route
-                    path="/user-manager"
-                    element={<UserManagerComponent />}
-                  ></Route>
-                  <Route
-                    path="/all-campaigns"
-                    element={<AllCampaignsPage />}
-                  ></Route>
-                  <Route
-                    path="/new-campaign"
-                    element={<CreateCampaignComponent />}
-                  ></Route>
-                  <Route path="/campaign" element={<CampaignPage />}></Route>
-                  <Route
-                    path="/add-campaign-product"
-                    element={<AddCanpaginProductComponent />}
-                  ></Route>
-                </Routes>
+          <UserInfoContext.Provider value={{ userInfo, setUserInfo }}>
+            <CampaignsSourceContext.Provider value={{ source, setSource }}>
+              <div className="App">
+                <NavbarComponent />
+                <div className="middle-layer">
+                  <StatusbarComponent />
+                  <Routes>
+                    <Route path="/" element={<HomePage />}></Route>
+                    <Route path="/about-us" element={<AboutUsPage />}></Route>
+                    <Route
+                      path="/contact-us"
+                      element={<ContactUsPage />}
+                    ></Route>
+                    <Route
+                      path="/register"
+                      element={<RegistarationPage />}
+                    ></Route>
+                    <Route
+                      path="/registerarion-form"
+                      element={<RegisterationFormComponent />}
+                    ></Route>
+                    <Route
+                      path="/user-manager"
+                      element={<UserManagerComponent />}
+                    ></Route>
+                    <Route
+                      path="/all-campaigns"
+                      element={<AllCampaignsPage />}
+                    ></Route>
+                    <Route
+                      path="/new-campaign"
+                      element={<CreateCampaignComponent />}
+                    ></Route>
+                    <Route path="/campaign" element={<CampaignPage />}></Route>
+                    <Route
+                      path="/add-campaign-product"
+                      element={<AddCanpaginProductComponent />}
+                    ></Route>
+                    <Route path="/products" element={<ProductsPage />}></Route>
+                    <Route
+                      path="/order-manager"
+                      element={<OrderManagerComponent />}
+                    ></Route>
+                  </Routes>
+                </div>
               </div>
-            </div>
-          </CampaignsSourceContext.Provider>
+            </CampaignsSourceContext.Provider>
+          </UserInfoContext.Provider>
         </RoleContext.Provider>
       );
     } else {
@@ -80,6 +94,7 @@ function App() {
                 <Route path="/campaign" element={<CampaignPage />}></Route>
                 <Route path="/about-us" element={<AboutUsPage />}></Route>
                 <Route path="/contact-us" element={<ContactUsPage />}></Route>
+                <Route path="/products" element={<ProductsPage />}></Route>
               </Routes>
             </div>
           </div>
