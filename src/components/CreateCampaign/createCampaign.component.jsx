@@ -76,6 +76,7 @@ export const CreateCampaignComponent = () => {
       HashTag,
       MyImage,
     };
+
     if (
       Name === "" ||
       Email === "" ||

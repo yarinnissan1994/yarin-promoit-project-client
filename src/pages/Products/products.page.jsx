@@ -10,6 +10,7 @@ import {
 import { UserInfoContext } from "../../context/userInfo.context";
 import { ToastContainer, toast } from "react-toastify";
 import "./products.css";
+import { postDonationTweet } from "../../services/twitter.services";
 
 export const ProductsPage = () => {
   const { user } = useAuth0();
@@ -17,11 +18,12 @@ export const ProductsPage = () => {
   const location = useLocation();
   const { userInfo, setUserInfo } = useContext(UserInfoContext);
   const { Campaign, Source } = location.state;
+  console.log(userInfo);
 
   const [productsData, setProductsData] = useState([]);
   const [expanded, setExpanded] = useState(false);
   const [key, setKey] = useState(null);
-  const [scaleImg, setScaleImg] = useState("");
+  const [scaleImg, setScaleImg] = useState(false);
   const [quantity, setQuantity] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [productData, setProductData] = useState({});
@@ -54,10 +56,10 @@ export const ProductsPage = () => {
     });
   };
 
-  const getProductsFromDB = async () => {
-    let res = await getProducts();
-    setProductsData(res);
-  };
+  // const getProductsFromDB = async () => {
+  //   let res = await getProducts();
+  //   setProductsData(res);
+  // };
 
   const getCampaignProductsFromDB = async () => {
     let res = await getProducts();
@@ -77,11 +79,11 @@ export const ProductsPage = () => {
 
   useEffect(() => {
     getCampaignProductsFromDB();
-  }, []);
+  }, [Source]);
 
-  const handleImg = () => {
-    if (scaleImg === "") setScaleImg(" td-img-big");
-    else if (scaleImg === " td-img-big") setScaleImg("");
+  const handleImg = (proKey) => {
+    setScaleImg(!scaleImg);
+    setKey(proKey);
   };
 
   const handleClick = (proKey) => {
@@ -92,7 +94,6 @@ export const ProductsPage = () => {
   };
 
   const handleUpadate = (Campaign, Product) => {
-    console.log(Product);
     navigate("/add-campaign-product", {
       state: {
         Campaign,
@@ -123,10 +124,18 @@ export const ProductsPage = () => {
         CampaignCode: Campaign.Code,
         ProductCode: product.Code,
       };
+      const donationTweetDetails = {
+        TwitterName: userInfo.Tweeter_Name,
+        Quantity: quantity,
+        ProductName: product.Name,
+        CampaignName: Campaign.Name,
+        CampaignHashTag: Campaign.HashTag,
+      };
       await updateDonateDetails(newOrder, quantity);
       await updateSAMoneyStatus(updatedSAMoney, userInfo.Code);
+      await postDonationTweet(donationTweetDetails);
       notify_seccess("We Thank you for your kind donation to " + Campaign.Name);
-      await sleep(5000);
+      await sleep(3000);
       let userInfoArray = await getUserInfo(user.email, "SA");
       setUserInfo(userInfoArray[0]);
       getCampaignProductsFromDB();
@@ -158,12 +167,17 @@ export const ProductsPage = () => {
               return (
                 <>
                   <tr>
-                    <td onClick={() => handleImg()}>
-                      <img
-                        src={product.Image}
-                        alt=""
-                        className={"td-img" + scaleImg}
-                      />
+                    <td onClick={() => handleImg(product.Code)}>
+                      {scaleImg && product.Code === key && (
+                        <img
+                          src={product.Image}
+                          alt=""
+                          className={"td-img td-img-big"}
+                        />
+                      )}
+                      {!scaleImg && (
+                        <img src={product.Image} alt="" className={"td-img"} />
+                      )}
                     </td>
                     <td>{product.Name}</td>
                     <td>{product.Price}$</td>
@@ -266,7 +280,7 @@ export const ProductsPage = () => {
             <p>Quantity: {quantity[productData.Code]}</p>
             <p>
               Total Price:{" "}
-              {(productData.Price * quantity[productData.Code]).toFixed(2)}
+              {(productData.Price * quantity[productData.Code]).toFixed(2)}$
             </p>
             <br />
             <p>To approve your Donation click on the button bellow</p>

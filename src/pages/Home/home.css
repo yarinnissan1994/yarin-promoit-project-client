@@ -1,0 +1,16 @@
+.HomePage--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+}
+
+.HomePage--container .carousel {
+  margin-top: 10px;
+}
+
+.HomePage--container h4 {
+  width: 70%;
+}

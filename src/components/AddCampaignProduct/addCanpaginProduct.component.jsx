@@ -104,7 +104,7 @@ export const AddCanpaginProductComponent = () => {
         <br />
         <label>
           Description:
-          <input
+          <textarea
             type="text"
             value={description}
             onChange={(event) => setDescription(event.target.value)}

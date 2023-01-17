@@ -2,9 +2,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(190, 255, 210);
+  background-color: #344d67;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 0.5rem 1rem;
+  height: 40px;
 }
 
 .Navbar--navbar-container .navbar-menu {
@@ -12,17 +13,19 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  gap: 70px;
 }
 
 .Navbar--navbar-container .navbar-menu li {
   margin: 0 1rem;
+  padding: 5px;
 }
 
 .Navbar--navbar-container .navbar-menu li a {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #000;
+  color: rgb(228, 228, 228);
 }
 
 .Navbar--navbar-container .navbar-menu li a .Link-lbl {
@@ -30,7 +33,11 @@
 }
 
 .Navbar--navbar-container .navbar-menu li a:hover {
-  color: #0070f3;
+  color: #3a3a3a;
+}
+
+.Navbar--navbar-container .navbar-menu li label:hover {
+  cursor: pointer;
 }
 
 .Navbar--navbar-container .navbar-menu li a:active {
@@ -40,4 +47,10 @@
 .Navbar--navbar-container .navbar-menu li a:focus {
   outline: none;
   box-shadow: none;
+}
+
+.Navbar--navbar-container .navbar-menu li:hover {
+  background-color: rgb(166, 253, 188);
+  border-radius: 30px;
+  cursor: pointer;
 }

@@ -18,6 +18,7 @@ export const RegisterationFormComponent = () => {
   const [websiteUrl, setWebsiteUrl] = useState("Enter Website URL Here");
   const [address, setAddress] = useState("Future Shiping Address");
   const [phone, setPhone] = useState("Phone Number");
+  const [twitter, setTwitter] = useState("Twitter Name");
   const [image, setImage] = useState("Image URL");
 
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -92,6 +93,7 @@ export const RegisterationFormComponent = () => {
             Address: address,
             PhoneNumber: phone,
             MyImage: image,
+            TwitterName: twitter,
           };
           await addUser(SAUser, role);
           notify_seccess(
@@ -126,6 +128,7 @@ export const RegisterationFormComponent = () => {
 
   return (
     <div className="RegisterationForm--form-container form-container">
+      <h1>Register</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="full-name">Full Name:</label>
         <input
@@ -172,6 +175,14 @@ export const RegisterationFormComponent = () => {
               id="phone"
               value={phone}
               onChange={(event) => setPhone(event.target.value)}
+            />
+            <br />
+            <label htmlFor="twitter">Twitter Name:</label>
+            <input
+              type="text"
+              id="twitter"
+              value={twitter}
+              onChange={(event) => setTwitter(event.target.value)}
             />
             <br />
           </>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
 import { approveOrderShipped, getOrders } from "../../services/services";
 import "./orderManager.css";
 
@@ -17,19 +16,6 @@ export const OrderManagerComponent = () => {
   useEffect(() => {
     getUserDataFromDB();
   }, []);
-
-  //   const notify_seccess = (message) => {
-  //     toast.success(message, {
-  //       position: "top-right",
-  //       autoClose: 5000,
-  //       hideProgressBar: false,
-  //       closeOnClick: true,
-  //       pauseOnHover: true,
-  //       draggable: true,
-  //       progress: undefined,
-  //       theme: "dark",
-  //     });
-  //   };
 
   const handleTimeFormat = (time) => {
     const date = new Date(time);
@@ -67,6 +53,7 @@ export const OrderManagerComponent = () => {
 
   return (
     <div className="OrderManager--my-tbl my-tbl">
+      <h1>Order Manager</h1>
       <table className="table table-striped">
         <thead>
           <tr>
@@ -142,7 +129,6 @@ export const OrderManagerComponent = () => {
                   onClick={() => handleModalShipped(orderDetails.Code)}
                 >
                   Shipped
-                  <ToastContainer />
                 </button>
               )}
               <button className="btn btn-danger" onClick={handleModalReturn}>

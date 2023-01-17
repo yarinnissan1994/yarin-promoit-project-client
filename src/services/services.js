@@ -82,6 +82,7 @@ export const addUserMessage = async (UserMessage) => {
 };
 
 export const addNewCampaign = async (NewCampaign, UserEmail) => {
+  console.log(NewCampaign, UserEmail);
   await axios.post(`${ServerUrl}/post-new-campaign/${UserEmail}`, NewCampaign);
 };
 
@@ -113,4 +114,22 @@ export const updateDonateDetails = async (NewOrder, Quantity) => {
 
 export const updateSAMoneyStatus = async (MoneyStatus, SACode) => {
   await axios.post(`${ServerUrl}/post-sa-money-status/${SACode}`, MoneyStatus);
+};
+
+export const getOwnerReport = async (reportType) => {
+  let result = await axios.get(`${ServerUrl}/get-report/${reportType}`);
+  if (result.status === 200) {
+    return result.data;
+  } else {
+    return null;
+  }
+};
+
+export const getMyDonations = async (SACode) => {
+  let result = await axios.get(`${ServerUrl}/get-my-donations/${SACode}`);
+  if (result.status === 200) {
+    return result.data;
+  } else {
+    return null;
+  }
 };

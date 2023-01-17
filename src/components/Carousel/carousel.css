@@ -1,0 +1,57 @@
+.CarouselComponent--container .carousel {
+  box-shadow: 0px 0px 15px black;
+  border-radius: 15px;
+  width: 60vw !important;
+}
+.CarouselComponent--container img {
+  height: 80vh !important;
+  width: 60vw !important;
+  border-radius: 15px;
+}
+.CarouselComponent--container .carousel-caption p,
+.CarouselComponent--container .carousel-caption h5 {
+  background-color: rgb(247, 247, 247, 0.7);
+  border-radius: 5px;
+  padding: 3px;
+  width: fit-content;
+}
+.CarouselComponent--container .carousel-caption {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.CarouselComponent--container .btn-info {
+  font-weight: 650;
+  color: rgb(246, 251, 251);
+  text-shadow: 0px 0px 3px black;
+  transition: 0.4s;
+}
+
+.CarouselComponent--container .btn-info:hover {
+  transform: scale(1.7);
+  text-shadow: 3px 3px 2px black;
+  cursor: pointer;
+}
+
+.CarouselComponent--container .modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 70%;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgb(255, 236, 207);
+  padding: 20px;
+  box-shadow: 0px 0px 10px black;
+  transition: all 0.3s ease-in-out;
+}
+
+.CarouselComponent--container .modal-container .modal-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+}

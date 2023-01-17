@@ -36,10 +36,11 @@ export const RoleManagerComponent = (props) => {
   }, [role]);
 
   return (
-    <div>
-      {role}
-      <br />
-      {role === "SA" && userInfo.Money_Status + "$"}
-    </div>
+    <></>
+    // <div>
+    //   <h3>{role}</h3>
+    //   <br />
+    //   <b>{role === "SA" && "Balance: " + userInfo.Money_Status + "$"}</b>
+    // </div>
   );
 };

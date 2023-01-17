@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import { CampaignsSourceContext } from "../../context/campaignsSource.context";
+import "./navbar.css";
 import HomeIcon from "@mui/icons-material/Home";
 import CampaignIcon from "@mui/icons-material/Campaign";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
-import "./navbar.css";
-import { useAuth0 } from "@auth0/auth0-react";
-import { CampaignsSourceContext } from "../../context/campaignsSource.context";
 
 export const NavbarComponent = (props) => {
   const { user, logout, loginWithRedirect } = useAuth0();

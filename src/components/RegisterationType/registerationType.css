@@ -5,13 +5,14 @@
   align-items: center;
   gap: 5px;
   margin-left: 18px;
+  height: 90vh;
 }
 .register-header {
   text-align: center;
 }
 .RegisterationType--card-container .card {
   width: 321px;
-  background-color: antiquewhite !important;
+  background-color: #ceedc7;
 }
 .RegisterationType--card-container .card-img {
   height: 250px;

@@ -1,11 +1,40 @@
 .App {
   text-align: left;
+  background-color: rgb(243, 236, 176);
+  height: 100%;
+  min-height: 100vh;
+}
+.table {
+  background-color: #fffcd9;
+  border-radius: 15px;
+}
+.navbar-container {
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 .middle-layer {
   display: flex;
   flex-direction: row;
 }
+.middle-layer .status-bar-container {
+  position: sticky;
+  top: 40px;
+  width: 15%;
+  height: 90vh;
+}
+.middle-layer .routes-container {
+  width: 85%;
+  margin: 10px;
+}
 textarea {
   width: 300px !important;
   height: 150px !important;
+}
+
+.App .spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

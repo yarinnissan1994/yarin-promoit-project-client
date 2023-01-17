@@ -36,6 +36,7 @@ export const UserManagerComponent = () => {
 
   return (
     <div className="UserManager--my-tbl my-tbl">
+      <h1>User Applications</h1>
       <table className="table table-striped">
         <thead>
           <tr>
