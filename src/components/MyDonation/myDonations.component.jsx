@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserInfoContext } from "../../context/userInfo.context";
-import { getMyDonations } from "../../services/services";
+import { getMyDonations } from "../../services/user.services";
 
 export const MyDonationsComponent = () => {
   const [myDonationsList, setMyDonations] = useState([]);
@@ -26,7 +26,7 @@ export const MyDonationsComponent = () => {
     <div className="UserManager--my-tbl my-tbl">
       <h1>Hi {userInfo.Name},</h1>
       <h5>
-        Amount of money you donated: <b>{totalPrice}</b>
+        Amount of money you donated: <b>{totalPrice}$</b>
       </h5>
       <h5>
         Number of products you donated: <b>{totalProducts}</b>

@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { approveOrderShipped, getOrders } from "../../services/services";
+import {
+  approveOrderShipped,
+  getOrders,
+} from "../../services/product.services";
 import "./orderManager.css";
 
 export const OrderManagerComponent = () => {

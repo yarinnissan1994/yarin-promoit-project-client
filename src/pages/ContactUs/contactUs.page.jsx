@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { addUserMessage } from "../../services/services";
+import { addUserMessage } from "../../services/user.services";
 import "./contactUs.css";
 import { ToastContainer, toast } from "react-toastify";
 

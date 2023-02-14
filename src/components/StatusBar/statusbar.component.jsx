@@ -4,11 +4,11 @@ import { RoleManagerComponent } from "../RoleManager/roleManager.component";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./statusbar.css";
 import { RoleContext } from "../../context/role.context";
-import { getPendding } from "../../services/services";
+import { getPendding } from "../../services/user.services";
 import { CampaignsSourceContext } from "../../context/campaignsSource.context";
 import { SyncLoader } from "react-spinners";
 import { RoleComponent } from "../Role/role.component";
-import { updateTwitterData } from "../../services/twitter.services";
+// import { updateTwitterData } from "../../services/twitter.services";
 export const StatusbarComponent = (props) => {
   const { role } = useContext(RoleContext);
   const { setSource } = useContext(CampaignsSourceContext);
@@ -27,7 +27,7 @@ export const StatusbarComponent = (props) => {
 
   useEffect(() => {
     handlePendding();
-    updateTwitterData();
+    // updateTwitterData();
     setTimeout(() => {
       setSpinner(false);
     }, 1000);

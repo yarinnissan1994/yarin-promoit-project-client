@@ -2,7 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CampaignsSourceContext } from "../../context/campaignsSource.context";
-import { getCampaigns } from "../../services/services";
+import { getCampaigns } from "../../services/campaign.services";
 import { TwitterShareButton } from "react-twitter-embed";
 import "./allCampaigns.css";
 

@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { approveUserPendding, getPenddingList } from "../../services/services";
+import {
+  approveUserPendding,
+  getPenddingList,
+} from "../../services/user.services";
 import { ToastContainer, toast } from "react-toastify";
 import "./userManager.css";
 

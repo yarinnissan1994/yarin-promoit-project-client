@@ -3,10 +3,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   getProducts,
-  getUserInfo,
   updateDonateDetails,
-  updateSAMoneyStatus,
-} from "../../services/services";
+} from "../../services/product.services";
+import { getUserInfo, updateSAMoneyStatus } from "../../services/user.services";
 import { UserInfoContext } from "../../context/userInfo.context";
 import { ToastContainer, toast } from "react-toastify";
 import "./products.css";

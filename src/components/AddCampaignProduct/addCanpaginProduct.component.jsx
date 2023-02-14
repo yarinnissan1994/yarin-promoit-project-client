@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import {
   addNewCampaignProduct,
   editCampaignProduct,
-} from "../../services/services";
+} from "../../services/product.services";
 import "./addCampaignProduct.css";
 
 export const AddCanpaginProductComponent = () => {

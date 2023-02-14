@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { toggleCampaignIsActive } from "../../services/services";
+import { toggleCampaignIsActive } from "../../services/campaign.services";
 import "./campaign.css";
 
 export const CampaignPage = () => {

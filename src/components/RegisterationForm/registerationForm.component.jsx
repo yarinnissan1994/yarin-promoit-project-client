@@ -1,10 +1,9 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { addUser } from "../../services/services";
+import { addUser, getPendding } from "../../services/user.services";
 import { ToastContainer, toast } from "react-toastify";
 import "./RegisterationForm.css";
-import { getPendding } from "./../../services/services";
 
 export const RegisterationFormComponent = () => {
   const navigate = useNavigate();

@@ -1,5 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { getRoles, getUserInfo } from "../../services/services";
+import { getRoles } from "../../services/services";
+import { getUserInfo } from "../../services/user.services";
 import React, { useContext, useEffect } from "react";
 import { RoleContext } from "../../context/role.context";
 import { UserInfoContext } from "../../context/userInfo.context";

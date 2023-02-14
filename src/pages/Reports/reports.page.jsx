@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getOwnerReport } from "../../services/services";
+import { getOwnerReport } from "../../services/reports.services";
 import "./reports.css";
 
 export const ReportsPage = () => {
@@ -228,7 +228,7 @@ export const ReportsPage = () => {
                         <td>{row.Email}</td>
                         <td>{row.Address}</td>
                         <td>{row.Phone_Number}</td>
-                        <td>{row.Money_Status}</td>
+                        <td>{row.Money_Status}$</td>
                         <td>{row.Social_Activity}</td>
                         <td>{row.Donations}</td>
                       </tr>
